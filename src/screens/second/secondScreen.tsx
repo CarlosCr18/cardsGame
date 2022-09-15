@@ -38,7 +38,7 @@ const SecondScreen = ({ setStatus }: props) => {
   let backgroundRef = useRef<any>();
   let secondsRef = useRef<any>(30000);
   const renderer = ({ seconds, total }: any) => {
-    if (seconds == 10) {
+    if (seconds == 10 && !ticking.paused) {
       ticking.play();
     }
     secondsRef.current = total;
@@ -59,14 +59,13 @@ const SecondScreen = ({ setStatus }: props) => {
       calls.push(await new Promise((resolve) => setTimeout(resolve, 300)));
       if (activeCard) {
         if (previousCard.value == newCardArray[index].value) {
-            if (pairs+1 === 4) {
-                setStatus("Victory");
-            }
-            let previousIndex = previousCard.index;
+          if (pairs + 1 === 4) {
+            setStatus("Victory");
+          }
+          let previousIndex = previousCard.index;
           newCardArray[index].paired = true;
           newCardArray[previousIndex].paired = true;
 
-        
           calls.push(setPairs(pairs + 1));
           calls.push(setModalValue(true));
           correct.play();
@@ -158,7 +157,7 @@ const SecondScreen = ({ setStatus }: props) => {
           <Countdown
             intervalDelay={0}
             precision={3}
-            onComplete={()=>setStatus("Defeat")}
+            onComplete={() => setStatus("Defeat")}
             date={Date.now() + secondsRef.current}
             renderer={renderer}
           />
