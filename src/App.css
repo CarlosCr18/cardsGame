@@ -1,0 +1,155 @@
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  60% {
+    transform: translateY(-7%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in {
+  100% {
+    transform: translateY(0);
+  }
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  text-align: center;
+  min-height: 100vh;
+  border-radius: 15px;
+  font-size: clamp(3.27rem, calc(2.43rem + 3.24vw), 6.31rem) !important;
+}
+
+.first {
+  background-color: aliceblue;
+}
+
+.startButton {
+  width: 50%;
+  font-size: clamp(3.27rem, calc(2.43rem + 3.24vw), 6.31rem) !important;
+}
+.slideInBottom {
+  transform: translateY(10rem);
+  animation: fade-in 500ms ease-in forwards, slide-in 350ms ease-in forwards;
+}
+
+.bounce:hover,
+.bounce:focus-visible {
+  animation: bounce 1s infinite;
+}
+.bouncing {
+  animation: bounce 1s infinite;
+}
+
+.logo {
+  transform: translateY(-10rem);
+  animation: fade-in 500ms ease-in forwards, slide-in 350ms ease-in forwards;
+}
+
+.cardContainer {
+  border-radius: 1rem;
+  transition: all 300ms;
+  width: 100%;
+  height: 100%;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flipping {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+.hiddenCard {
+  background-color: rgb(21, 91, 196);
+  color: rgb(238, 238, 79);
+}
+
+.visibleCard {
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.grid {
+  position: relative;
+  max-height: 100vh !important;
+  padding: 2rem;
+  display: grid;
+  justify-content:center;
+  align-content: end;
+  grid-template-columns: repeat(2, 40vw);
+  grid-template-rows: repeat(4, 20vh);
+  gap: 15px;
+}
+
+@media only screen and (min-width:1200px){
+  .grid{
+    max-width: 1920px;
+    grid-template-columns: repeat(4,20vw);
+    grid-template-rows: repeat(2, 40vh);
+    justify-content: center;
+  }
+}
+
+.grid * {
+  justify-self: stretch;
+  align-self: stretch;
+}
+
+.soundButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  background-color: white;
+  border-radius: 0.5rem;
+}
+
+.countdown {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
