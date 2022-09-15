@@ -38,7 +38,7 @@ const SecondScreen = ({ setStatus }: props) => {
   let backgroundRef = useRef<any>();
   let secondsRef = useRef<any>(30000);
   const renderer = ({ seconds, total }: any) => {
-    if (seconds == 10 && !ticking.paused) {
+    if (seconds == 10 && ticking.paused) {
       ticking.play();
     }
     secondsRef.current = total;

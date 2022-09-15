@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
 @keyframes bounce {
   0% {
     transform: translateY(0);
@@ -30,6 +32,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Poppins';
 }
 
 .container {
@@ -152,4 +155,10 @@ body {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
+}
+
+
+.modal-body{
+  font-size: clamp(1.89rem, calc(1.72rem + 0.60vw), 2.44rem);
+  text-align: center;
 }
