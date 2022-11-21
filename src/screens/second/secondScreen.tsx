@@ -113,6 +113,8 @@ const SecondScreen = ({ setStatus }: props) => {
       }
     };
     cardsLogic();
+
+    // eslint-disable-next-line 
   }, [disableCards]);
 
   useEffect(() => {
@@ -145,6 +147,7 @@ const SecondScreen = ({ setStatus }: props) => {
         setStatus(gameStates.Home);
       }
     });
+    // eslint-disable-next-line 
   }, []);
 
   useEffect(() => {
