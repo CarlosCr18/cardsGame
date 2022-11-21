@@ -1,19 +1,12 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import Button from "react-bootstrap/Button";
+import { gameStates } from "../../App";
 
 interface props {
-  setStatus: Dispatch<SetStateAction<string>>;
+  setStatus: Dispatch<SetStateAction<gameStates>>;
 }
 
 const Defeat = ({ setStatus }: props) => {
-  const [isLoadedDefeat, setIsLoadedDefeat] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoadedDefeat(true);
-    }, 500);
-  }, []);
-
   return (
     <div className="container d-flex flex-column justify-content-around align-items-center">
       <div className="logo">
@@ -21,14 +14,11 @@ const Defeat = ({ setStatus }: props) => {
       </div>
       <Button
         onClick={() => {
-          setStatus("Game");
+          setStatus(gameStates.Game);
         }}
         size="lg"
         variant="success"
-        className={
-          isLoadedDefeat ? "startButton bounce" : "startButton slideInBottom"
-        }
-      >
+        className={"startButton bounce"}>
         Play again
       </Button>{" "}
     </div>

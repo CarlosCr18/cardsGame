@@ -1,35 +1,25 @@
-import { Dispatch, SetStateAction, useState, useEffect } from "react";
+import { Dispatch, SetStateAction } from "react";
 import Button from "react-bootstrap/Button";
 import logo from "../../assets/logo.svg";
+import { gameStates } from "../../App";
 
 interface props {
-  setStatus: Dispatch<SetStateAction<string>>;
+  setStatus: Dispatch<SetStateAction<gameStates>>;
 }
 
 const FirstScreen = ({ setStatus }: props) => {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoaded(true);
-    }, 500);
-  }, []);
-
   return (
-    <div className="container d-flex flex-column justify-content-around align-items-center">
+    <div className="container d-flex flex-column justify-content-center align-items-center">
       <div className="logo">
         <img src={logo} alt="logo" width={500} />
       </div>
       <Button
         onClick={() => {
-          setStatus("Game");
+          setStatus(gameStates.Game);
         }}
         size="lg"
         variant="success"
-        className={
-          isLoaded ? "startButton bouncing" : "startButton slideInBottom"
-        }
-      >
+        className={"startButton homeButtonAnimation"}>
         Start
       </Button>{" "}
     </div>

@@ -26,14 +26,7 @@ interface cardProps {
   paired: boolean;
 }
 
-const Card = ({
-  value,
-  status,
-  revealCard,
-  disabled,
-  index,
-  paired,
-}: cardProps) => {
+const Card = ({ value, status, revealCard, disabled, index, paired }: cardProps) => {
   const [animation, setAnimation] = useState("cardContainer flip-card");
   let image;
   switch (value) {
@@ -51,7 +44,7 @@ const Card = ({
       break;
   }
   useEffect(() => {
-    if (status == "visible") {
+    if (status === "visible") {
       setAnimation("cardContainer flip-card flipping");
     } else {
       setAnimation("cardContainer flip-card hiddenCard");
@@ -64,27 +57,17 @@ const Card = ({
       disabled={paired || disabled}
       onClick={() => {
         revealCard(index);
-      }}
-    >
+      }}>
       <div className="flip-card-inner">
-        {status == "visible" ? (
+        {status === "visible" ? (
           <img
-            className={
-              status == "visible"
-                ? "visibleCard flip-card-front"
-                : "visibleCard flip-card-back"
-            }
+            className={status === "visible" ? "visibleCard flip-card-front" : "visibleCard flip-card-back"}
             alt="cardImage"
-            src={image}
-          ></img>
+            width={'100%'}
+            height={'100%'}
+            src={image}></img>
         ) : (
-          <div
-            className={
-              status == "visible"
-                ? "visibleCard flip-card-back"
-                : "visibleCard flip-card-front"
-            }
-          >
+          <div className={status === "visible" ? "visibleCard flip-card-back" : "visibleCard flip-card-front"}>
             <span>?</span>
           </div>
         )}
